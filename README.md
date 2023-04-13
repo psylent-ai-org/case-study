@@ -1,3 +1,9 @@
+# Instructions
+- The objective is to ensure the implemented code is accurately generating the correct scores and profiles.
+- **PLEASE READ AND REVIEW** the implemented code and the function summaries in the respective sections for context.
+- Based on the implemented code, propose a solution to revise the code and show us your approach in unit and/or integration testing. You can do so by adding test projects to cover all possible cases.
+- You are encouraged to use testing tools like xUnit, MSTest or nUnit
+
 # Case Study
 
 This project is Engine Scoring API that takes input score and process it.
@@ -30,7 +36,3 @@ Examples:
 It also can check the raw score whether it fits condition in certain rules.
 
 
-## Instructions
-- Given this simple project, add test projects to cover all possible cases.
-You can use any testing tool (xUnit, MSTest, or nUnit).
-- Some functions has its summary written in their respective comments. Read carefully.
