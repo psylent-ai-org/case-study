@@ -20,7 +20,7 @@ public class CultureScore: IComparable<CultureScore>
         return new CultureScore
         {
             Culture = Culture,
-            Value = Convert.ToUInt32(scalingFactor)
+            Value = (uint)scaledScore
         };
     }
     
