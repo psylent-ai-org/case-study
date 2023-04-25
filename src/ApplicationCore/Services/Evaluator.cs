@@ -17,7 +17,7 @@ public static class Evaluator
     public static EvaluationResult CheckAllZeroRule(RawScore score)
     {
         var collaborate = score.Collaborate.Value;
-        var create = score.Collaborate.Value;
+        var create = score.Create.Value;
         var compete = score.Compete.Value;
         var control = score.Control.Value;
         var allZeros = collaborate == 0 && create == 0 && compete == 0 && control == 0;
@@ -41,8 +41,8 @@ public static class Evaluator
         var collaborate = score.Collaborate.Value;
         var create = score.Create.Value;
         var compete = score.Compete.Value;
-        var control = score.Compete.Value;
-        var allLowScore = collaborate < 10 && create < 10 && compete < 10 && control <= 10;
+        var control = score.Control.Value;
+        var allLowScore = collaborate < 10 && create < 10 && compete < 10 && control < 10;
 
         var checkResult = allLowScore switch
         {

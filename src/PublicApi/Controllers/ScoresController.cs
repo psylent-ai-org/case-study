@@ -9,7 +9,7 @@ namespace PublicApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class ScoresController: ControllerBase
+public sealed class ScoresController: ControllerBase
 {
     private readonly IScoring _scoring;
 
@@ -18,23 +18,20 @@ public class ScoresController: ControllerBase
         _scoring = scoring;
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="request"></param>
-    /// <returns></returns>
     [HttpPost("process")]
     public IActionResult ProcessScoreHandler([FromBody] ProcessScoreRequest request)
     {
-        var raw = new RawScore(request.Data.Value);
+        var raw = new RawScore(request.Data);
         var scaled = _scoring.Scale(raw);
         var ranked = _scoring.Rank(scaled);
-        var response = new ProcessedScoreResponse { Data = new ProcessedScore
-        {
-            Raw = raw,
-            Scaled = scaled,
-            Ranked = ranked
-        } };
+        var response = new ProcessedScoreResponse { 
+            Data = new ProcessedScore
+            {
+                Raw = raw,
+                Scaled = scaled,
+                Ranked = ranked
+            }
+        };
         return Ok(response);
     }
 
@@ -46,7 +43,7 @@ public class ScoresController: ControllerBase
         var allLowResult = Evaluator.CheckAllLowScoreRule(rawScore);
         var response = new EvaluatedScoreResponse
         {
-            Results = new List<EvaluatedResult>()
+            Results = new List<EvaluatedResult>
             {
                 new() { Result = allZeroResult, Name = RuleType.AllZeros },
                 new() { Result = allLowResult, Name = RuleType.AllLowScore }

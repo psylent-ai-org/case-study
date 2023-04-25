@@ -3,7 +3,7 @@ using ApplicationCore.ValueObjects;
 
 namespace ApplicationCore.Services;
 
-public class ScoringService: IScoring
+public sealed class ScoringService: IScoring
 {
     public ScaledScore Scale(RawScore rawScore)
     {
@@ -12,8 +12,8 @@ public class ScoringService: IScoring
 
     public ScaledScore Scale(Score score)
     {
-        var raw = new RawScore(score);
-        return raw.Scale();
+        var rawScore = new RawScore(score);
+        return Scale(rawScore);
     }
 
     public RankedCulture Rank(ScaledScore score)
@@ -21,11 +21,11 @@ public class ScoringService: IScoring
         var arr = new List<CultureScore> { score.Collaborate, score.Create, score.Compete, score.Control };
         arr.Sort();
         return new RankedCulture
-        {
-            First = arr[3].Culture,
-            Second = arr[2].Culture,
-            Third = arr[1].Culture,
-            Fourth = arr[0].Culture,
-        };
+        (
+            arr[3].Culture,
+            arr[2].Culture,
+            arr[1].Culture,
+            arr[0].Culture
+        );
     }
 }
