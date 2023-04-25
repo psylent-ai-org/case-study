@@ -7,7 +7,6 @@ public class CultureScore: IComparable<CultureScore>
     public uint Value { get; set; }
     public Culture Culture { get; set; }
 
-    
     /// <summary>
     /// Scale the score
     /// </summary>
@@ -20,11 +19,10 @@ public class CultureScore: IComparable<CultureScore>
         return new CultureScore
         {
             Culture = Culture,
-            Value = Convert.ToUInt32(scalingFactor)
+            Value = Convert.ToUInt32(scaledScore)
         };
     }
     
-
     /// <summary>
     /// Default to ascending
     /// </summary>

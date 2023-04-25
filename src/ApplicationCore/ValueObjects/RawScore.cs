@@ -13,8 +13,8 @@ public class RawScore
     {
         Collaborate = new CultureScore { Culture = Culture.Collaborate, Value = Convert.ToUInt32(inputScore.Collaborate) };
         Create = new CultureScore { Culture = Culture.Create, Value = Convert.ToUInt32(inputScore.Create) };
-        Compete = new CultureScore { Culture = Culture.Compete, Value = Convert.ToUInt32(inputScore.Create) };
-        Control = new CultureScore { Culture = Culture.Compete, Value = Convert.ToUInt32(inputScore.Control) };
+        Compete = new CultureScore { Culture = Culture.Compete, Value = Convert.ToUInt32(inputScore.Compete) };
+        Control = new CultureScore { Culture = Culture.Control, Value = Convert.ToUInt32(inputScore.Control) };
     }
 
     public override string ToString()
@@ -45,11 +45,11 @@ public class RawScore
         var scalingFactor = maxScore / 100f;
 
         return new ScaledScore
-        {
-            Collaborate = Collaborate.Scale(scalingFactor),
-            Create = Create.Scale(scalingFactor),
-            Compete = Compete.Scale(scalingFactor),
-            Control = Control.Scale(scalingFactor)
-        };
+        (
+            collaborate: Collaborate.Scale(scalingFactor),
+            create: Create.Scale(scalingFactor),
+            compete: Compete.Scale(scalingFactor),
+            control: Control.Scale(scalingFactor)
+        );
     }
 }
