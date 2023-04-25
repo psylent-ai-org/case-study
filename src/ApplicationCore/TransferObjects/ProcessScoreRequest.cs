@@ -2,7 +2,7 @@
 
 namespace ApplicationCore.TransferObjects;
 
-public class ProcessScoreRequest
+public sealed class ProcessScoreRequest
 {
-    public Score? Data { get; set; }
+    public Score Data { get; set; }
 }

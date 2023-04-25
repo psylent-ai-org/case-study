@@ -2,8 +2,8 @@
 
 public struct Score
 {
-    public int Collaborate { get; set; }
-    public int Create { get; set; }
-    public int Compete { get; set; }
-    public int Control { get; set; }
+    public uint Collaborate { get; set; }
+    public uint Create { get; set; }
+    public uint Compete { get; set; }
+    public uint Control { get; set; }
 }
